@@ -8,11 +8,14 @@
 # email: brent_maranzano@gmail.com
 
 # Usage:
-# create two Docker volumes: mosquitto_log, mosquitto_data
-# create mosquitto.conf file in the current directory
+# ./docker_run.sh
 # see: https://hub.docker.com/_/eclipse-mosquitto
 ################################################################################
-#    --publish 127.0.0.1:1883:1883/tcp --publish 127.0.0.1:9001:9001/tcp \
+
+# Create the docker volumes
+echo "Creating Docker volumes"
+docker volume create mosquitto_log
+docker volume create mosquitto_data
  
 docker run --detach=true --name mosquitto \
     --publish 1883:1883/tcp --publish 9001:9001/tcp \
